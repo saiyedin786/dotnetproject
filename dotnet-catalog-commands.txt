@@ -1,0 +1,57 @@
+In VS Code
+===========
+dotnet publish -o ./publish --configuration release
+
+Go to the folder
+Remove:
+Microsoft.CodeAnalysis.*
+Microsoft.VisualStudio.*
+NuGet.*
+Localization folders
+
+Download PuTTy
+==============
+https://www.putty.org/
+
+
+.NET Commands
+====================
+sudo dnf install aspnetcore-runtime-8.0
+
+dotnet --info
+
+mkdir catalog
+cd catalog
+pwd
+
+
+Copy files from local computer to the VM using SCP
+=================================================
+* From the VS Code terminal *
+cd publish
+pscp -r -i <PATH_TO_PPK_FILE> * ec2-user@<CATALOG_VM_IP_ADDRESS>:/home/ec2-user/catalog
+
+
+Set Production Environment Variable and run the app
+===================================================
+* In PuTTy: *
+export ASPNETCORE_ENVIRONMENT=Production
+dotnet catalog.dll
+
+* Change firewall rule to open the 8080 port *
+
+
+Set the catalog service
+=======================
+echo -e "[Unit]\nDescription=ReadIt App\n[Service]\nWorkingDirectory=/home/ec2-user/catalog\nExecStart=/usr/bin/dotnet /home/ec2-user/catalog/catalog.dll --urls=http://0.0.0.0:8080\nRestart=always\n[Install]\nWantedBy=multi-user.target" | sudo tee /etc/systemd/system/readit.service
+
+sudo systemctl enable readit
+
+sudo systemctl start readit
+
+systemctl status readit
+
+
+
+
+
