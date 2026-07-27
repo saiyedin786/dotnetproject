@@ -43,7 +43,7 @@ dotnet catalog.dll
 
 Set the catalog service
 =======================
-echo -e "[Unit]\nDescription=ReadIt App\n[Service]\nWorkingDirectory=/home/ec2-user/catalog\nExecStart=/usr/bin/dotnet /home/ec2-user/dotnetproject/catalog/catalog.dll --urls=http://0.0.0.0:8080\nRestart=always\n[Install]\nWantedBy=multi-user.target" | sudo tee /etc/systemd/system/readit.service
+echo -e "[Unit]\nDescription=ReadIt App\n[Service]\nWorkingDirectory=/home/ec2-user/catalog\nExecStart=/usr/bin/dotnet /home/ec2-user/dotnetproject/catalog/publish/catalog.dll --urls=http://0.0.0.0:8080\nRestart=always\n[Install]\nWantedBy=multi-user.target" | sudo tee /etc/systemd/system/readit.service
 
 sudo systemctl enable readit
 
