@@ -53,5 +53,8 @@ systemctl status readit
 
 
 
+cd publish
+dotnet catalog.dll --urls "http://0.0.0.0:8080"
+
 
 

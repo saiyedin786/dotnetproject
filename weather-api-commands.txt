@@ -1,0 +1,14 @@
+sudo dnf install git
+
+sudo dnf update
+
+sudo dnf install nodejs
+
+sudo dnf install npm
+
+sudo git clone https://github.com/memilavi/weatherAPI.git
+
+cd weatherAPI
+
+npm start
+
